@@ -8,7 +8,7 @@ Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	aclocal
+BuildRequires:	automake
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
