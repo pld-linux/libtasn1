@@ -1,17 +1,18 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl):	Biblioteka ASN.1 u¿ywana w GNUTLS
 Name:		libtasn1
-Version:	0.2.10
+Version:	0.2.12
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	9b1547cb9d27aa70fe872a06d5fe3be0
-Patch0:		%{name}-am18.patch
+# Source0-md5:	21fa10ec1c186bb0c38593a0efe1a260
+Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	automake >= 1.9
 BuildRequires:	libtool
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -66,6 +67,7 @@ Biblioteka statyczna libtasn1.
 %{__libtoolize}
 %{__aclocal}
 %{__automake}
+%{__autoheader}
 %{__autoconf}
 %configure
 %{__make}
@@ -82,10 +84,16 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%post devel
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+
+%postun devel
+[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir %{_infodir} >/dev/null 2>&1
+
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README THANKS doc/*.ps
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%doc AUTHORS ChangeLog NEWS README THANKS doc/*.html
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
@@ -94,6 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_includedir}/*.h
 %{_aclocaldir}/libtasn1.m4
+%{_infodir}/*.info*
+%{_mandir}/man3/*.3*
 
 %files static
 %defattr(644,root,root,755)
