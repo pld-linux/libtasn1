@@ -6,6 +6,7 @@ Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
+# Source0-md5:	83cc739839e3d40947ad2f62871c81f7
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
