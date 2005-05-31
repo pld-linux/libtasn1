@@ -11,6 +11,7 @@ Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
+BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
