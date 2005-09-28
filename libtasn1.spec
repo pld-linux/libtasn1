@@ -1,3 +1,8 @@
+#
+# Conditional build:
+%bcond_without	apidocs		# disable gtk-doc
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl):	Biblioteka ASN.1 u¿ywana w GNUTLS
 Name:		libtasn1
@@ -11,7 +16,8 @@ Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	gtk-doc
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.4}
+BuildRequires:	gtk-doc-automake >= 1.4
 BuildRequires:	libtool
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,12 +71,19 @@ Biblioteka statyczna libtasn1.
 %patch0 -p1
 
 %build
+%{?with_apidocs:%{__gtkdocize}}
 %{__libtoolize}
 %{__aclocal} -I m4 -I gl/m4
 %{__automake}
 %{__autoheader}
 %{__autoconf}
-%configure
+
+%configure \
+	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
+	%{?with_apidocs:--with-html-dir=%{_gtkdocdir}} \
+	--%{?with_static_libs:en}%{!?with_static_libs:dis}able-static \
+	--enable-shared
+
 %{__make}
 
 %install
@@ -106,7 +119,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libtasn1.pc
 %{_infodir}/*.info*
 %{_mandir}/man3/*.3*
+%{?with_apidocs:%{_gtkdocdir}/%{name}}
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
