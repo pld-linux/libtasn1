@@ -19,6 +19,7 @@ BuildRequires:	automake >= 1:1.9
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.4}
 BuildRequires:	gtk-doc-automake >= 1.4
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
