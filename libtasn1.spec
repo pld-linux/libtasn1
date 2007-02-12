@@ -4,7 +4,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	ASN.1 library used in GNUTLS
-Summary(pl):	Biblioteka ASN.1 u縴wana w GNUTLS
+Summary(pl.UTF-8):   Biblioteka ASN.1 u偶ywana w GNUTLS
 Name:		libtasn1
 Version:	0.3.8
 Release:	1
@@ -33,38 +33,38 @@ structures management. The main features of this library are:
 - DER (Distinguish Encoding Rules) encoding
 - no limits for INTEGER and ENUMERATED values
 
-%description -l pl
-Biblioteka libasn1 stworzona do zarz眃zania strukturami ASN1 (Abstract
-Syntax Notation One). G丑wne cechy biblioteki to:
-- zarz眃zanie strukturami ASN1 w spos骲 nie wymagaj眂y generowania
-  plik體 z kodem w C
-- zarz眃zanie strukturami ASN1 w spos骲 umo縧iwiaj眂y generowanie
-  plik體 z kodem w C
+%description -l pl.UTF-8
+Biblioteka libasn1 stworzona do zarz膮dzania strukturami ASN1 (Abstract
+Syntax Notation One). G艂贸wne cechy biblioteki to:
+- zarz膮dzanie strukturami ASN1 w spos贸b nie wymagaj膮cy generowania
+  plik贸w z kodem w C
+- zarz膮dzanie strukturami ASN1 w spos贸b umo偶liwiaj膮cy generowanie
+  plik贸w z kodem w C
 - kodowanie DER (Distinguish Encoding Rules)
-- brak limit體 dla warto禼i INTEGER oraz ENUMERATED
+- brak limit贸w dla warto艣ci INTEGER oraz ENUMERATED
 
 %package devel
 Summary:	Header files etc to develop libtasn1 applications
-Summary(pl):	Pliki nag丑wkowe i inne do libtasn1
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe i inne do libtasn1
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files etc to develop libtasn1 applications.
 
-%description devel -l pl
-Pliki nag丑wkowe i inne do libtasn1.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe i inne do libtasn1.
 
 %package static
 Summary:	Static libtasn1 library
-Summary(pl):	Biblioteka statyczna libtasn1
+Summary(pl.UTF-8):   Biblioteka statyczna libtasn1
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libtasn1 library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna libtasn1.
 
 %prep
