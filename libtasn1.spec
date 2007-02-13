@@ -4,7 +4,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	ASN.1 library used in GNUTLS
-Summary(pl.UTF-8):   Biblioteka ASN.1 używana w GNUTLS
+Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
 Version:	0.3.8
 Release:	1
@@ -45,7 +45,7 @@ Syntax Notation One). Główne cechy biblioteki to:
 
 %package devel
 Summary:	Header files etc to develop libtasn1 applications
-Summary(pl.UTF-8):   Pliki nagłówkowe i inne do libtasn1
+Summary(pl.UTF-8):	Pliki nagłówkowe i inne do libtasn1
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -57,7 +57,7 @@ Pliki nagłówkowe i inne do libtasn1.
 
 %package static
 Summary:	Static libtasn1 library
-Summary(pl.UTF-8):   Biblioteka statyczna libtasn1
+Summary(pl.UTF-8):	Biblioteka statyczna libtasn1
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
