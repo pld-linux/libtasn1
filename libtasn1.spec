@@ -6,15 +6,15 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl):	Biblioteka ASN.1 u¿ywana w GNUTLS
 Name:		libtasn1
-Version:	0.2.18
+Version:	0.3.8
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	e44a58746803de101c55ae8683d677a1
+# Source0-md5:	5f83b9660b79dc956688aeae2ed36152
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.9
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.4}
 BuildRequires:	gtk-doc-automake >= 1.4
@@ -108,7 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS doc/*.html
+%attr(755,root,root) %{_bindir}/asn1*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%{_mandir}/man1/asn1*.1*
 
 %files devel
 %defattr(644,root,root,755)
