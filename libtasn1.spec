@@ -7,7 +7,7 @@ Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
 Version:	0.3.9
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
@@ -67,6 +67,18 @@ Static libtasn1 library.
 %description static -l pl.UTF-8
 Biblioteka statyczna libtasn1.
 
+%package apidocs
+Summary:	libtasn1 API documentation
+Summary(pl.UTF-8):	Dokumentacja API libtasn1
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libtasn1 API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libtasn1.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -122,10 +134,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libtasn1.pc
 %{_infodir}/*.info*
 %{_mandir}/man3/*.3*
-%{?with_apidocs:%{_gtkdocdir}/%{name}}
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
 %endif
