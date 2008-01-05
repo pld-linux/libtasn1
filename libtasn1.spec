@@ -6,12 +6,12 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
-Version:	1.1
+Version:	1.2
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	93b43cc5013bda4d8bf64508f1566c54
+# Source0-md5:	a9e310e9b067d86257b8f3ab032afdb1
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.61
@@ -123,24 +123,26 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS doc/*.html
 %attr(755,root,root) %{_bindir}/asn1*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libtasn1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libtasn1.so.3
 %{_mandir}/man1/asn1*.1*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libtasn1-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
+%attr(755,root,root) %{_libdir}/libtasn1.so
+%{_libdir}/libtasn1.la
+%{_includedir}/libtasn1.h
 %{_aclocaldir}/libtasn1.m4
 %{_pkgconfigdir}/libtasn1.pc
-%{_infodir}/*.info*
-%{_mandir}/man3/*.3*
+%{_infodir}/libtasn1.info*
+%{_mandir}/man3/asn1_*.3*
+%{_mandir}/man3/libtasn1_*.3*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libtasn1.a
 %endif
 
 %if %{with apidocs}
