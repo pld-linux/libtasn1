@@ -1,10 +1,10 @@
---- libtasn1-0.2.12/doc/libtasn1.texi.orig	2004-12-10 15:34:06.000000000 +0100
-+++ libtasn1-0.2.12/doc/libtasn1.texi	2004-12-11 12:05:33.460545184 +0100
-@@ -35,9 +35,9 @@
+--- libtasn1-2.3/doc/libtasn1.texi.orig	2009-06-08 17:17:26.000000000 +0200
++++ libtasn1-2.3/doc/libtasn1.texi	2009-10-03 18:45:18.332606747 +0200
+@@ -28,9 +28,9 @@
  @end quotation
  @end copying
  
--@dircategory GNU Libraries
+-@dircategory Software libraries
 +@dircategory Libraries:
  @direntry
 -* libtasn1: (libtasn1). Library for Abstract Syntax Notation One (ASN.1).

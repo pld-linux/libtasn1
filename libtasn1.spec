@@ -6,12 +6,12 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
-Version:	1.8
+Version:	2.3
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
 Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	6b87c159e7dcb6e58204cce1edb0fecc
+# Source0-md5:	4f0918cf8fe8b2b4ba189938772d1dd2
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/gnutls/
 BuildRequires:	autoconf >= 2.61
@@ -88,16 +88,17 @@ Dokumentacja API libtasn1.
 %build
 %{?with_apidocs:%{__gtkdocize}}
 %{__libtoolize}
-%{__aclocal} -I m4 -I gl/m4
+%{__aclocal} -I m4 -I gl/m4 -I lib/glm4
 %{__automake}
 %{__autoheader}
 %{__autoconf}
 
 %configure \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
-	%{?with_apidocs:--with-html-dir=%{_gtkdocdir}} \
 	--%{?with_static_libs:en}%{!?with_static_libs:dis}able-static \
-	--enable-shared
+	%{?with_apidocs:--with-html-dir=%{_gtkdocdir}} \
+	--with-packager="PLD/Linux" \
+	--with-packager-bug-reports="http://bugs.pld-linux.org/"
 
 %{__make}
 
@@ -106,6 +107,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -129,7 +132,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/libtasn1-config
 %attr(755,root,root) %{_libdir}/libtasn1.so
 %{_libdir}/libtasn1.la
 %{_includedir}/libtasn1.h
