@@ -10,10 +10,10 @@ Version:	2.9
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
-Source0:	ftp://ftp.gnutls.org/pub/gnutls/libtasn1/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
 # Source0-md5:	f4f4035b84550100ffeb8ad4b261dea9
 Patch0:		%{name}-info.patch
-URL:		http://www.gnu.org/software/gnutls/
+URL:		http://www.gnu.org/software/libtasn1/
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
