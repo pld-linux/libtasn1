@@ -6,12 +6,12 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
-Version:	2.12
+Version:	2.13
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	4eba39fb962d6cf5a370267eae8ff52b
+# Source0-md5:	df27eaddcc46172377e6b907e33ddc83
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libtasn1/
 BuildRequires:	autoconf >= 2.61
@@ -22,6 +22,7 @@ BuildRequires:	gtk-doc-automake >= 1.4
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.98
+BuildRequires:	sed >= 4.0
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -86,6 +87,10 @@ Dokumentacja API libtasn1.
 %prep
 %setup -q
 %patch0 -p1
+
+# remove it when "linking libtool libraries using a non-POSIX archiver ..." warning is gone
+# (after libtasn1 or libtool change)
+%{__sed} -i -e '/AM_INIT_AUTOMAKE/s/-Werror//' configure.ac
 
 %build
 %{?with_apidocs:%{__gtkdocize}}
