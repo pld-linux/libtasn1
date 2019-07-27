@@ -6,23 +6,24 @@
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
-Version:	4.13
+Version:	4.14
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
 Source0:	http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	ce2ba4d3088119b48e7531a703669c52
+# Source0-md5:	e9918200ed4a778e2b3cbe34c1be4205
 Patch0:		%{name}-info.patch
+Patch1:		%{name}-gtkdoc.patch
 URL:		http://www.gnu.org/software/libtasn1/
-BuildRequires:	autoconf >= 2.61
-BuildRequires:	automake >= 1:1.10
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.4}
 BuildRequires:	gtk-doc-automake >= 1.4
+BuildRequires:	help2man
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	sed >= 4.0
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -90,19 +91,15 @@ Dokumentacja API libtasn1.
 %prep
 %setup -q
 %patch0 -p1
-
-# remove it when non-POSIX make warnings are gone
-# (after libtasn1 or gtk-doc change)
-%{__sed} -i -e '/AM_INIT_AUTOMAKE/s/-Werror//' configure.ac
+%patch1 -p1
 
 %build
 %{?with_apidocs:%{__gtkdocize}}
 %{__libtoolize}
-%{__aclocal} -I m4 -I gl/m4 -I lib/glm4
-%{__automake}
-%{__autoheader}
+%{__aclocal} -I m4 -I m4-gl
 %{__autoconf}
-
+%{__autoheader}
+%{__automake}
 %configure \
 	--enable-gtk-doc%{!?with_apidocs:=no} \
 	--disable-silent-rules \
@@ -135,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README THANKS doc/*.html
+%doc AUTHORS ChangeLog NEWS README.md THANKS doc/*.html
 %attr(755,root,root) %{_bindir}/asn1*
 %attr(755,root,root) %{_libdir}/libtasn1.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libtasn1.so.6

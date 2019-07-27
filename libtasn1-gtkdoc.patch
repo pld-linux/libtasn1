@@ -1,0 +1,14 @@
+libtasn1 doesn't use gobject types
+--- libtasn1-4.14/doc/reference/libtasn1-docs.xml.orig	2019-03-29 20:39:30.000000000 +0100
++++ libtasn1-4.14/doc/reference/libtasn1-docs.xml	2019-07-27 18:31:56.696555155 +0200
+@@ -34,10 +34,6 @@
+         <xi:include href="xml/libtasn1.xml"/>
+ 
+   </chapter>
+-  <chapter id="object-tree">
+-    <title>Object Hierarchy</title>
+-    <xi:include href="xml/tree_index.sgml"/>
+-  </chapter>
+   <index id="api-index-full">
+     <title>API Index</title>
+     <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>
