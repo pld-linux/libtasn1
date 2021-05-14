@@ -20,8 +20,9 @@ BuildRequires:	docbook-dtd412-xml
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.4}
 BuildRequires:	gtk-doc-automake >= 1.4
 BuildRequires:	help2man
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -77,6 +78,7 @@ Summary:	libtasn1 API documentation
 Summary(pl.UTF-8):	Dokumentacja API libtasn1
 Group:		Documentation
 Requires:	gtk-doc-common
+Conflicts:	libtasn1-devel < 0.3.9-2
 BuildArch:	noarch
 
 %description apidocs
