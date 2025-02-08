@@ -1,17 +1,17 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# disable gtk-doc
-%bcond_without	static_libs	# don't build static library
+%bcond_without	apidocs		# gtk-doc based API documentation
+%bcond_without	static_libs	# static library
 
 Summary:	ASN.1 library used in GNUTLS
 Summary(pl.UTF-8):	Biblioteka ASN.1 używana w GNUTLS
 Name:		libtasn1
-Version:	4.19.0
+Version:	4.20.0
 Release:	1
 License:	LGPL v2.1+ (library), GPL v3+ (tools)
 Group:		Libraries
 Source0:	https://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
-# Source0-md5:	f701ab57eb8e7d9c105b2cd5d809b29a
+# Source0-md5:	930f71d788cf37505a0327c1b84741be
 Patch0:		%{name}-info.patch
 URL:		http://www.gnu.org/software/libtasn1/
 BuildRequires:	autoconf >= 2.63
@@ -89,7 +89,7 @@ Dokumentacja API libtasn1.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{?with_apidocs:%{__gtkdocize}}
